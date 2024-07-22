@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     })
 
 })
-//Task 10:
+
 
 
 
