@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day10</title>
+</head>
+<style>
+    div input{
+        display: block;
+        margin-bottom: 20px;
+        padding: 8px;
+    }
+</style>
+<body>
+    <button class="button1">
+        <p class="para">Click</p>
+    </button>
+    <img src="../Day9/icons8-hi-64.png" class="image" style="display: block; margin-top: 8px; cursor:pointer;" alt="hi">
+    <div class="color" style="background-color: red; width: fit-content; padding:10px; border-radius: 4px;cursor: pointer;">Hover over</div>
+    <input type="text" placeholder="Press any key or keys" style="margin-top:14px ; padding : 4px" class="write">
+    <p style="margin-left: 4px; background-color:lavender; width: fit-content;" class="displayText"></p>
+    <script src="Day10.js"></script>
+
+    <form class="form" action="submitform" style="border: 2px black solid ; width: fit-content; padding-bottom:12px; padding-left: 20px; padding-right: 20px;">
+        <h1>Fill The Form</h1>
+        <div  >
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="email" placeholder="Email Address">
+            <input type="text" name="number" placeholder="Phone Number">
+            <input type="text" name="message" placeholder="Wanna write something!">
+        </div>
+
+        <div>
+            <label for="options">
+                choose one option:
+                <select name="options" class="options">
+                    <option value="You are amazing.">1</option>
+                    <option value="Have a good Day.">2</option>
+                    <option value="You are getting better.">3</option>
+                </select>
+            </label>
+        </div>
+        <p class="paraDisplay"></p>
+
+        <button style="background-color: red; padding-right: 20px; padding-left: 20px; padding-top:6px ; padding-bottom: 6px ; border: red;border-radius: 4px;cursor: pointer;" class="submitButton">Submit</button>
+    </form>
+    <ul class="parent" style="cursor: pointer;">
+        <li class="child">This is list 1</li>
+        <li class="child">This is list 2</li>
+        <li class="child">This is list 3</li>
+        <li class="child">This is list 4</li>
+    </ul>
+    <button class="addchild" style="margin-top:14px">
+        add child
+    </button>
+    
+</body>
+</html>
