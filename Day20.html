@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Example</title>
+</head>
+<body>
+    <form action="formSubmit" id="form">
+        <input id="name" name="name" type = 'text' placeholder = 'name'/>
+        <input id="email" name="email" type = 'text' placeholder = "email"/>
+        <button type="submit">Save</button>
+        <p id="displayInfo" >Display Information(initial)</p>
+        <p id="displayInfo2" >Display Information(later)</p>
+       
+    </form>
+
+    <label for="keyInput">Enter a key:</label>
+    <input type="text" id="keyInput">
+    <br>
+    <label for="valueInput">Enter a value:</label>
+    <input type="text" id="valueInput">
+    <br>
+    <button onclick="saveToStorage()">Save to Storage</button>
+
+    <script>
+        //1
+        const myString = "hello world";
+        localStorage.setItem("setItem", myString);
+        const getString = localStorage.getItem("setItem");
+        console.log("The Item is: " + getString);
+        
+        //2
+        const myObj = {
+           name : 'Frienze',
+           age : 18,
+           gender: 'female', 
+        };
+        const toString = JSON.stringify(myObj);
+        localStorage.setItem("myObj" , toString);
+        const getItem01 = localStorage.getItem("myObj");
+        const parsedObject = JSON.parse(getItem01);
+        console.log("Parsed Object:", parsedObject);
+
+        //6
+        sessionStorage.setItem("myObj" , toString);
+        const storedItem = localStorage.getItem("myObj");
+        const parseStoredItem = JSON.parse(storedItem);
+        console.log("Parsed session Storage : ", parseStoredItem);
+    
+        //3 and 7 and 8:
+        const myform = document.getElementById('form');
+        const  myName = document.getElementById('name');
+        const myEmail = document.getElementById('email');
+        const myFinalInfo = document.getElementById('displayInfo2');
+        const myInitialInfo = document.getElementById('displayInfo');
+
+        myform.addEventListener("submit" , function(e){
+            e.preventDefault()
+
+            const userName = myName.value;
+            const userEmail = myEmail.value;
+
+            localStorage.setItem("userName" , userName);
+            localStorage.setItem("userEmail" , userEmail);
+
+            sessionStorage.setItem("userName" , userName);
+            sessionStorage.setItem("userEmail" , userEmail);
+
+            myName.value = '';
+            myEmail.value = '';
+
+            myInitialInfo.innerHTML = `
+            <p>Name : ${userName}</p>
+            <p>Email : ${userEmail}</p>
+            `
+        });
+
+        const savedName = localStorage.getItem('userName');
+        const savedEmail = localStorage.getItem('userEmail');
+
+        const savedName01 = sessionStorage.getItem('userName');
+        const savedEmail02 = sessionStorage.getItem('userEmail');
+
+        if (savedName && savedEmail) {
+            myInitialInfo.innerHTML = `
+            <p>Name: ${savedName}</p>
+            <p>Email: ${savedEmail}</p>
+            <p >session Storage</p>
+            <p>Name:  ${savedName}</p>
+            <p>Email:  ${savedEmail}</p>
+            
+        `;
+        }
+        //4
+        const removeName = localStorage.removeItem("userName");
+        const removeName02 = localStorage.removeItem("userName");
+
+        myFinalInfo.innerHTML = `
+            <p>Name: ${savedName}</p>
+            <p>Email: ${savedEmail}</p>
+            <p>session Storage</p>
+            <p>Name:  ${savedName}</p>
+            <p>Email:  ${savedEmail}</p>
+        `;
+        
+        //5
+        sessionStorage.setItem("myKey" , myString);
+        const storedValue = sessionStorage.getItem("myKey");
+        console.log(storedValue);
+
+        //9
+
+        function saveToStorage() {
+            const key = document.getElementById('keyInput').value;
+            const value = document.getElementById('valueInput').value;
+
+            localStorage.setItem(key, value);
+
+            sessionStorage.setItem(key, value);
+
+            const localStorageValue = localStorage.getItem(key);
+            const sessionStorageValue = sessionStorage.getItem(key);
+
+            console.log(`Value for key "${key}" in localStorage: ${localStorageValue}`);
+            console.log(`Value for key "${key}" in sessionStorage: ${sessionStorageValue}`);
+        }
+
+        function clearLocalStorage() {
+            localStorage.clear();
+        }
+
+        function clearSessionStorage() {
+            sessionStorage.clear();
+        }
+
+        function verifyEmptyStorage() {
+            const localStorageIsEmpty = Object.keys(localStorage).length === 0;
+            const sessionStorageIsEmpty = Object.keys(sessionStorage).length === 0;
+
+            console.log(`localStorage is empty: ${localStorageIsEmpty}`);
+            console.log(`sessionStorage is empty: ${sessionStorageIsEmpty}`);
+        }
+
+        clearLocalStorage();
+        clearSessionStorage();
+        verifyEmptyStorage();
+
+
+    </script>
+</body>
+</html>
