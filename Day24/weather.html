@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <style>
+        .hourly-item{
+            flex:0 0 auto; 
+            width:80px; 
+            display:flex; 
+            flex-direction:column; 
+            align-items:center; 
+            margin-right:10px; 
+            color:white
+        }
+        .hourly-item img{
+            width:30px;
+            height:30px; 
+            margin-bottom:5px;
+        }
+    </style>
 </head>
-<body>
-    <div id="weather-container">
-        <h2>Weather App</h2>
-        <input type="text" id="city" placeholder="Enter city">
-        <button onclick="getWeatherInfo()">Search</button>
+<body style="display: flex; flex-direction: column; height:98vh; justify-content: center; margin:32px 30px 32px 30px ">
+    <div id="weather-container" style="text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: 1px solid; padding:8px; border-radius: 14px;box-shadow: 0 10px 15px rgb(56, 56, 56) ">
+        <h2 style="margin-top:4px 0">Weather App</h2>
+        <div style="margin-top:20px">
+            <input style="padding: 8px; box-sizing: border-box; outline: none; " type="text" id="city" placeholder="Enter city">
+            <button style="padding: 8px; font-weight: bold;" onclick="getWeatherInfo()">Search</button>
+    
+        </div>
+        <img id="weather-icon" alt="Weather icon" style="width: 200px; height: 200px; margin:0 auto 10px; display: none;">
 
-        <img id="weather-icon" alt="Weather-icon">
+        <div id="temp-div" style="font-size: 60px; margin-top:-30px; margin-bottom: 0;"></div>
 
-        <div id="temp-div"></div>
+        <div id="weather-info" style="font-size: 20px; margin-bottom: 0; margin-top:0"></div>
 
-        <div id="weather-info"></div>
-
-        <div id="hourly-forecast"></div>
+        <div id="hourly-forecast" style="margin-top: 50px; margin-bottom:0px; overflow-x:auto; white-space: nowrap; display: flex; justify-content: space-between;"></div>
     </div>
     <script src="./weather.js"></script>
 </body>
