@@ -5,7 +5,7 @@ const MovieCards = ({movie : {Poster , Year , Type, Title , imdbId}}) => {
 
     <div className=" flex justify-center " key={imdbId}>
         
-        <div className="border border-blue-900 p-1 rounded-md"> 
+        <div className=" shadow-md shadow-blue-900 border border-blue-900 p-1 rounded-md"> 
             <img src={Poster!== "N/A" ? Poster : "https://via.placeholder.com/400"} alt="Poster" className="w-44 h-44" />
             <div className="p-2">
                 <p className="text-sm">{Year}</p>

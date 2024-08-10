@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieCards from "./MovieCards";
-
-const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=6e4020c6";
+const api_Key = import.meta.env.VITE_SECRET_KEY;
+const API_URL = `https://www.omdbapi.com/?i=tt3896198&apikey=${api_Key}`;
 
 const Searchbar = () => {
     const [movieSearch , setMovieSearch] = useState([]);
@@ -16,7 +16,7 @@ const Searchbar = () => {
     }
 
     useEffect(() => {
-        searchMovie("batman")
+        searchMovie("Avengers")
     } , [])
     return (
     <div>
